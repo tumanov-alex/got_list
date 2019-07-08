@@ -18,15 +18,17 @@ export default function Card({
   died,
   titles,
   allegiances,
+  url,
 }) {
   const [ house, setHouse ] = useState({})
+  const id = url.split('/').pop()
 
   useEffect(() => {
     !house.name && (async () => setHouse(await getHouse(allegiances[0])))()
   })
 
   return <div className={`container ${gender.toLowerCase()}`}>
-    <Link to='/character'>
+    <Link to={`/character/${id}`}>
       <div id='header'>{ name }</div>
     </Link>
 

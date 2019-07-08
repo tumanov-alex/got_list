@@ -1,12 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import '../Cards/index.scss'
-import Card from '../Card'
 import _uniqueId from 'lodash.uniqueid'
-import { BrowserRouter as Router, Route } from "react-router-dom"
-import Character from '../Character'
-import House from '../House'
+import Card from '../Card'
 
-function Cards() {
+export default function Cards() {
   const [ cards, setCards ] = useState([])
   const [ page, setPage ] = useState(1)
 
@@ -37,15 +33,5 @@ function Cards() {
         }}>page { page + 1 } load</button>
       </div>
     </div>
-  )
-}
-
-export default function App() {
-  return (
-    <Router>
-      <Route exact path='/' component={Cards} />
-      <Route exact path='/character/:id' render={(params) => <Character {...params}/>} />
-      <Route path='/house' component={House} />
-    </Router>
   )
 }

@@ -21,6 +21,8 @@ function Cards() {
       .catch(console.error)
   })
 
+  console.log(cards)
+
   return (
     <div id='container'>
       <div id="App">
@@ -44,8 +46,8 @@ export default function App() {
   return (
     <Router>
       <Route exact path='/' component={Cards} />
-      <Route exact path='/character/:id' render={(params) => <Character {...params}/>} />
-      <Route path='/house' component={House} />
+      <Route path='/character/:id' component={Character} />
+      <Route path='/house/:id' component={House} />
     </Router>
   )
 }

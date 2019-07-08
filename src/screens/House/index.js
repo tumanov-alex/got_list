@@ -1,5 +1,19 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
-export default function House() {
-  return null
+const getHouse = async (id) => {
+  return await fetch(`https://www.anapioficeandfire.com/api/houses/${id}`)
+    .then(r => r.json())
+    .catch(console.error)
+}
+
+export default function House(props) {
+  const [ house, setHouse ] = useState({})
+
+  useEffect(() => {
+    !house.name && (async () => setHouse(await getHouse(props.match.params.id)))()
+  })
+
+  return <div>
+    <span>name: {house.name}</span>
+  </div>
 }

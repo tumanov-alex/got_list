@@ -21,14 +21,15 @@ export default function Card({
   url,
 }) {
   const [ house, setHouse ] = useState({})
-  const id = url.split('/').pop()
+  const characterID = url.split('/').pop()
+  const houseID = allegiances[0].split('/').pop()
 
   useEffect(() => {
     !house.name && (async () => setHouse(await getHouse(allegiances[0])))()
   })
 
   return <div className={`container ${gender.toLowerCase()}`}>
-    <Link to={`/character/${id}`}>
+    <Link to={`/character/${characterID}`}>
       <div id='header'>{ name }</div>
     </Link>
 
@@ -38,7 +39,7 @@ export default function Card({
 
         {died && <EmojiLabel emoji='☠️' label={died} />}
 
-        <Link to='/house'>
+        <Link to={`/house/${houseID}`}>
           <EmojiLabel emoji='🏠' label={house.name || <Spinner/>} />
         </Link>
       </div>

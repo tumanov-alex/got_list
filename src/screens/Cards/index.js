@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import _uniqueId from 'lodash.uniqueid'
 import Card from '../Card'
+import './index.scss'
 
 export default function Cards() {
   const [ cards, setCards ] = useState([])
